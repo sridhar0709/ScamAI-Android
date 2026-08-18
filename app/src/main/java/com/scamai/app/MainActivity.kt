@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
 
 private enum class ScanMode { MESSAGE, URL, SCREENSHOT, CONVERSATION }
 
@@ -29,6 +31,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 private fun ScamAIApp() {
     var mode by remember { mutableStateOf(ScanMode.MESSAGE) }
     var input by remember { mutableStateOf("") }
@@ -224,5 +227,5 @@ private object ApiClient {
     }
 
     private fun String.toMediaTypeOrNull() =
-        okhttp3.MediaType.parse(this)
+        this.toMediaType()
 }
