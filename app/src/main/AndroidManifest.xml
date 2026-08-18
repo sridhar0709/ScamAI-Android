@@ -3,6 +3,7 @@
     <application
         android:allowBackup="true"
         android:label="ScamAI"
+        android:icon="@drawable/scamai_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScamAI">
         <activity
